@@ -1,0 +1,21 @@
+{
+  "name": "multi-tenant-saas-demo",
+  "version": "1.0.0",
+  "description": "Next.js 14 demo with multi-tenancy, PostGIS geofencing, and Socket.io real-time communication.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JustDevItPk/multi-tenant-saas-demo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/JustDevItPk/multi-tenant-saas-demo/issues"
+  },
+  "homepage": "https://github.com/JustDevItPk/multi-tenant-saas-demo#readme"
+}
