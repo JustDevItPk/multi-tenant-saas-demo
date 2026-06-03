@@ -1,6 +1,6 @@
 import { prisma } from "../../../lib/prisma";
 import { NextResponse } from "next/server";
-
+ // Demo geofence polygon.
 export async function POST(request: Request) {
   try {
     const { lat, lng } = await request.json();

@@ -14,7 +14,7 @@ const mockRedisTenants = {
 export function middleware(request: NextRequest) {
   const host = request.headers.get("host") || "";
 
-  // Allow requests from localhost during development when no subdomain is used.
+  // Allow localhost requests without a tenant subdomain.
   if (host.startsWith("localhost")) {
     return NextResponse.next();
   }
