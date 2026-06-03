@@ -11,8 +11,7 @@ const io = new Server(httpServer, {
   },
 });
 
-// Ephemeral in-memory counter used for the demo. This is intentionally
-// transient — production should use a persistent store.
+// In-memory counter for demo purposes.
 let counter = 0;
 
 io.on("connection", (socket) => {
