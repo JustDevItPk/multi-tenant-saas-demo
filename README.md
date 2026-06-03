@@ -1,6 +1,6 @@
 # Multi-Tenant SaaS Demo
 
-A demo project implementing the three required technical tasks:
+Demo implementation covering:
 
 - Multi-tenant middleware with subdomain-based tenant resolution
 - PostGIS geofence validation using Prisma and ST_Contains
@@ -8,7 +8,7 @@ A demo project implementing the three required technical tasks:
 
 ## Tech Stack
 
-- Next.js 16
+- Next.js 14 App Router
 - TypeScript
 - PostgreSQL + PostGIS
 - Prisma ORM
@@ -22,7 +22,8 @@ apps/
 ├── web/
 │   ├── app/
 │   ├── lib/
-│   └── middleware.ts
+│   ├── middleware.ts
+│   └── prisma/
 │
 └── socket-server/
     └── server.ts
@@ -46,7 +47,7 @@ docker run --name postgis-demo \
 
 ### 2. Install Dependencies
 
-#### Web App
+#### Web Application
 
 ```bash
 cd apps/web
@@ -66,16 +67,24 @@ Create `.env` inside `apps/web`:
 
 ```env
 DATABASE_URL="postgresql://postgres:password@localhost:5432/postgres"
+NEXT_PUBLIC_SOCKET_URL="http://localhost:4000"
 ```
 
-### 4. Run Socket Server
+### 4. Generate Prisma Client
+
+```bash
+cd apps/web
+npx prisma generate
+```
+
+### 5. Run Socket Server
 
 ```bash
 cd apps/socket-server
 npm run dev
 ```
 
-### 5. Run Next.js App
+### 6. Run Next.js App
 
 ```bash
 cd apps/web
@@ -87,7 +96,8 @@ npm run dev
 ### Multi-Tenant Middleware
 
 - Extracts tenant from subdomain
-- Performs tenant lookup
+- Looks up tenant in a mock Redis store
+- Injects tenant headers
 - Returns 404 for unknown tenants
 
 ### Geofence Validation
@@ -119,3 +129,12 @@ Response:
 
 - Socket.io based counter synchronization
 - Updates reflected across multiple browser tabs
+
+## Test Routes
+
+```text
+http://localhost:3000
+http://tenant1.localhost:3000/tenant
+http://tenant2.localhost:3000/tenant
+http://unknown.localhost:3000/tenant
+```
