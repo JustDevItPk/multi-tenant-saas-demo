@@ -1,10 +1,7 @@
 import { prisma } from "../../../lib/prisma";
 import { NextResponse } from "next/server";
 
-// Hardcoded polygon used for the geofence demonstration. This is a
-// simplification so the demo can run without external spatial files or
-// complex setup. In production, use parameterized queries and proper
-// validation/error handling.
+// Demo geofence polygon.
 export async function POST(request: Request) {
   const { lat, lng } = await request.json();
 
