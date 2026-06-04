@@ -15,12 +15,9 @@ export function middleware(request: NextRequest) {
   const host = request.headers.get("host") || "";
 
   // Allow localhost and all Vercel domains
-  if (
-    host.includes("localhost") ||
-    host.includes("vercel.app")
-  ) {
-    return NextResponse.next();
-  }
+  if (host === "localhost:3000") {
+  return NextResponse.next();
+}
 
   const subdomain = host.split(".")[0];
 
