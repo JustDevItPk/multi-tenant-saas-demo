@@ -1,5 +1,3 @@
-
-console.log("Prisma file loaded");
 import { PrismaClient } from "@prisma/client";
 // Reuse Prisma client during development.
 const globalForPrisma = globalThis as {
