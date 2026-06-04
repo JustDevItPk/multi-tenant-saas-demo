@@ -14,8 +14,11 @@ const mockRedisTenants = {
 export function middleware(request: NextRequest) {
   const host = request.headers.get("host") || "";
 
-  // Allow localhost requests without a tenant subdomain.
-  if (host.startsWith("localhost")) {
+  // Allow localhost and all Vercel domains
+  if (
+    host.includes("localhost") ||
+    host.includes("vercel.app")
+  ) {
     return NextResponse.next();
   }
 
